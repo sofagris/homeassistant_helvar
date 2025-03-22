@@ -11,5 +11,6 @@
   "requirements": ["aiohelvar==0.9.3"],
   "ssdp": [],
   "version": "0.1.0", 
-  "zeroconf": []
+  "zeroconf": [],
+  "icon": "https://raw.githubusercontent.com/sofagris/homeassistant_helvar/refs/heads/main/custom_components/helvar/"
 }
