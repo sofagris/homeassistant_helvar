@@ -12,5 +12,5 @@
   "ssdp": [],
   "version": "0.1.0", 
   "zeroconf": [],
-  "icon": "https://raw.githubusercontent.com/sofagris/homeassistant_helvar/main/custom_components/helvar/helvar_logo.png"
+  "icon": "mdi:light-switch"
 }
