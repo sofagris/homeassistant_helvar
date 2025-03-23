@@ -12,5 +12,17 @@
   "ssdp": [],
   "version": "0.1.0", 
   "zeroconf": [],
-  "icon": "mdi:light-switch"
+  "icon": "mdi:light-switch",
+  "translations": [
+    {
+      "en": "en",
+      "nb": "nb",
+      "sv": "sv",
+      "da": "da",
+      "fi": "fi",
+      "fr": "fr",
+      "es": "es",
+      "it": "it"
+    }
+  ]
 }
