@@ -3,20 +3,38 @@
   "config": {
     "step": {
       "user": {
+        "title": "[%key:component::helvar::config::step::user::title%]",
+        "description": "[%key:component::helvar::config::step::user::description%]",
         "data": {
           "host": "[%key:common::config_flow::data::host%]",
           "username": "[%key:common::config_flow::data::username%]",
-          "password": "[%key:common::config_flow::data::password%]"
+          "password": "[%key:common::config_flow::data::password%]",
+          "port": "[%key:component::helvar::config::step::user::data::port%]"
         }
       }
     },
     "error": {
       "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
       "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
-      "unknown": "[%key:common::config_flow::error::unknown%]"
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "timeout": "[%key:component::helvar::config::error::timeout%]"
     },
     "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+      "cannot_connect": "[%key:component::helvar::config::abort::cannot_connect%]",
+      "invalid_host": "[%key:component::helvar::config::abort::invalid_host%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "[%key:component::helvar::options::step::init::title%]",
+        "description": "[%key:component::helvar::options::step::init::description%]",
+        "data": {
+          "host": "[%key:common::config_flow::data::host%]",
+          "port": "[%key:component::helvar::config::step::user::data::port%]"
+        }
+      }
     }
   }
 }
