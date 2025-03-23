@@ -1,0 +1,22 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Enheden er allerede konfigureret"
+        },
+        "error": {
+            "cannot_connect": "Kunne ikke oprette forbindelse",
+            "invalid_auth": "Ugyldig godkendelse",
+            "unknown": "Uventet fejl"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "Vært",
+                    "password": "Adgangskode",
+                    "username": "Brugernavn"
+                }
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 

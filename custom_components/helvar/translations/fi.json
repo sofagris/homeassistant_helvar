@@ -1,0 +1,22 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Laite on jo määritetty"
+        },
+        "error": {
+            "cannot_connect": "Yhteyden muodostaminen epäonnistui",
+            "invalid_auth": "Virheellinen todennus",
+            "unknown": "Odottamaton virhe"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "Isäntä",
+                    "password": "Salasana",
+                    "username": "Käyttäjänimi"
+                }
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 
