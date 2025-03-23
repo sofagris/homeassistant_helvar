@@ -1,20 +1,38 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Device is already configured"
+            "already_configured": "Device is already configured",
+            "cannot_connect": "Failed to connect to device, please verify the IP address",
+            "invalid_host": "Invalid IP address or hostname"
         },
         "error": {
             "cannot_connect": "Failed to connect",
             "invalid_auth": "Invalid authentication",
-            "unknown": "Unexpected error"
+            "unknown": "Unexpected error",
+            "timeout": "Connection timeout"
         },
         "step": {
             "user": {
                 "data": {
-                    "host": "Host",
+                    "host": "IP address",
                     "password": "Password",
-                    "username": "Username"
-                }
+                    "username": "Username",
+                    "port": "Port (default: 50000)"
+                },
+                "description": "Connect to Helvar router. Default port is 50000.",
+                "title": "Helvar Router Setup"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP address",
+                    "port": "Port (default: 50000)"
+                },
+                "description": "Update the Helvar router settings.",
+                "title": "Helvar Settings"
             }
         }
     },

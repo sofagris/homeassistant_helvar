@@ -8,7 +8,7 @@ import aiohelvar
 import voluptuous as vol
 
 from homeassistant import config_entries
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv
@@ -36,6 +36,14 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     def __init__(self):
         """Initialize the Helvar flow."""
         self.router: aiohelvar.Router | None = None
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(
+        config_entry: config_entries.ConfigEntry,
+    ) -> OptionsFlowHandler:
+        """Get the options flow for this handler."""
+        return OptionsFlowHandler(config_entry)
 
     async def validate_input(
         self, hass: HomeAssistant, data: dict[str, Any]
@@ -79,11 +87,43 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if errors:
             return self.async_show_form(
-                step_id="user", data_schema=STEP_USER_DATA_SCHEMA, errors=errors
+                step_id="user",
+                data_schema=STEP_USER_DATA_SCHEMA,
+                errors=errors,
             )
 
-        _LOGGER.exception("Creating Helvar config entry")
         return self.async_create_entry(title=info["title"], data=user_input)
+
+
+class OptionsFlowHandler(config_entries.OptionsFlow):
+    """Handle options flow for Helvar integration."""
+
+    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+        """Initialize options flow."""
+        self.config_entry = config_entry
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
+        """Manage the options."""
+        if user_input is not None:
+            return self.async_create_entry(title="", data=user_input)
+
+        schema = {
+            vol.Required(
+                CONF_HOST,
+                default=self.config_entry.data.get(CONF_HOST),
+            ): cv.string,
+            vol.Optional(
+                CONF_PORT,
+                default=self.config_entry.data.get(CONF_PORT, DEFAULT_PORT),
+            ): cv.port,
+        }
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=vol.Schema(schema),
+        )
 
 
 class CannotConnect(HomeAssistantError):

@@ -1,20 +1,38 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Enheden er allerede konfigureret"
+            "already_configured": "Enheden er allerede konfigureret",
+            "cannot_connect": "Kunne ikke oprette forbindelse til enheden, kontroller IP-adressen",
+            "invalid_host": "Ugyldig IP-adresse eller værtsnavn"
         },
         "error": {
             "cannot_connect": "Kunne ikke oprette forbindelse",
             "invalid_auth": "Ugyldig godkendelse",
-            "unknown": "Uventet fejl"
+            "unknown": "Uventet fejl",
+            "timeout": "Timeout ved forbindelse"
         },
         "step": {
             "user": {
                 "data": {
-                    "host": "Vært",
+                    "host": "IP-adresse",
                     "password": "Adgangskode",
-                    "username": "Brugernavn"
-                }
+                    "username": "Brugernavn",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Opret forbindelse til Helvar router. Standardport er 50000.",
+                "title": "Helvar Router Opsætning"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP-adresse",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Opdater indstillingerne for Helvar routeren.",
+                "title": "Helvar Indstillinger"
             }
         }
     },

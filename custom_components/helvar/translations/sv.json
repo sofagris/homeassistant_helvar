@@ -1,20 +1,38 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Enheten är redan konfigurerad"
+            "already_configured": "Enheten är redan konfigurerad",
+            "cannot_connect": "Det gick inte att ansluta till enheten, kontrollera IP-adressen",
+            "invalid_host": "Ogiltig IP-adress eller värdnamn"
         },
         "error": {
             "cannot_connect": "Det gick inte att ansluta",
             "invalid_auth": "Ogiltig autentisering",
-            "unknown": "Oväntat fel"
+            "unknown": "Oväntat fel",
+            "timeout": "Timeout vid anslutning"
         },
         "step": {
             "user": {
                 "data": {
-                    "host": "Värd",
+                    "host": "IP-adress",
                     "password": "Lösenord",
-                    "username": "Användarnamn"
-                }
+                    "username": "Användarnamn",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Anslut till Helvar router. Standardport är 50000.",
+                "title": "Helvar Router Inställning"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP-adress",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Uppdatera inställningarna för Helvar routern.",
+                "title": "Helvar Inställningar"
             }
         }
     },

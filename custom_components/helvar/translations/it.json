@@ -1,20 +1,38 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Il dispositivo è già configurato"
+            "already_configured": "Il dispositivo è già configurato",
+            "cannot_connect": "Impossibile connettersi al dispositivo, verificare l'indirizzo IP",
+            "invalid_host": "Indirizzo IP o nome host non valido"
         },
         "error": {
             "cannot_connect": "Impossibile connettersi",
             "invalid_auth": "Autenticazione non valida",
-            "unknown": "Errore imprevisto"
+            "unknown": "Errore imprevisto",
+            "timeout": "Timeout della connessione"
         },
         "step": {
             "user": {
                 "data": {
-                    "host": "Host",
+                    "host": "Indirizzo IP",
                     "password": "Password",
-                    "username": "Nome utente"
-                }
+                    "username": "Nome utente",
+                    "port": "Porta (predefinita: 50000)"
+                },
+                "description": "Connetti al router Helvar. La porta predefinita è 50000.",
+                "title": "Configurazione router Helvar"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "Indirizzo IP",
+                    "port": "Porta (predefinita: 50000)"
+                },
+                "description": "Aggiorna le impostazioni del router Helvar.",
+                "title": "Impostazioni Helvar"
             }
         }
     },
