@@ -1,0 +1,40 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Gerät ist bereits konfiguriert",
+            "cannot_connect": "Verbindung zum Gerät fehlgeschlagen, überprüfen Sie die IP-Adresse",
+            "invalid_host": "Ungültige IP-Adresse oder Hostname"
+        },
+        "error": {
+            "cannot_connect": "Verbindung fehlgeschlagen",
+            "invalid_auth": "Ungültige Authentifizierung",
+            "unknown": "Unerwarteter Fehler",
+            "timeout": "Zeitüberschreitung bei der Verbindung"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "IP-Adresse",
+                    "password": "Passwort",
+                    "username": "Benutzername",
+                    "port": "Port (Standard: 50000)"
+                },
+                "description": "Verbindung zum Helvar-Router herstellen. Standardport ist 50000.",
+                "title": "Helvar-Router Einrichtung"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP-Adresse",
+                    "port": "Port (Standard: 50000)"
+                },
+                "description": "Aktualisieren Sie die Einstellungen des Helvar-Routers.",
+                "title": "Helvar-Einstellungen"
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 

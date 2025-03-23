@@ -1,0 +1,40 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Apparaat is al geconfigureerd",
+            "cannot_connect": "Kan geen verbinding maken met het apparaat, controleer het IP-adres",
+            "invalid_host": "Ongeldig IP-adres of hostnaam"
+        },
+        "error": {
+            "cannot_connect": "Kan geen verbinding maken",
+            "invalid_auth": "Ongeldige authenticatie",
+            "unknown": "Onverwachte fout",
+            "timeout": "Time-out bij verbinding"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "IP-adres",
+                    "password": "Wachtwoord",
+                    "username": "Gebruikersnaam",
+                    "port": "Poort (standaard: 50000)"
+                },
+                "description": "Maak verbinding met de Helvar-router. Standaardpoort is 50000.",
+                "title": "Helvar-router Configuratie"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP-adres",
+                    "port": "Poort (standaard: 50000)"
+                },
+                "description": "Werk de instellingen van de Helvar-router bij.",
+                "title": "Helvar-instellingen"
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 

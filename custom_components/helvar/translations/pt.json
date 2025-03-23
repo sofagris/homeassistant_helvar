@@ -1,0 +1,40 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Dispositivo já está configurado",
+            "cannot_connect": "Falha ao conectar ao dispositivo, verifique o endereço IP",
+            "invalid_host": "Endereço IP ou nome do host inválido"
+        },
+        "error": {
+            "cannot_connect": "Falha na conexão",
+            "invalid_auth": "Autenticação inválida",
+            "unknown": "Erro inesperado",
+            "timeout": "Tempo limite de conexão excedido"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "Endereço IP",
+                    "password": "Senha",
+                    "username": "Nome de usuário",
+                    "port": "Porta (padrão: 50000)"
+                },
+                "description": "Conecte-se ao roteador Helvar. A porta padrão é 50000.",
+                "title": "Configuração do Roteador Helvar"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "Endereço IP",
+                    "port": "Porta (padrão: 50000)"
+                },
+                "description": "Atualize as configurações do roteador Helvar.",
+                "title": "Configurações Helvar"
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 

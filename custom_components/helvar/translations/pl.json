@@ -1,0 +1,40 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Urządzenie jest już skonfigurowane",
+            "cannot_connect": "Nie można połączyć się z urządzeniem, sprawdź adres IP",
+            "invalid_host": "Nieprawidłowy adres IP lub nazwa hosta"
+        },
+        "error": {
+            "cannot_connect": "Nie można się połączyć",
+            "invalid_auth": "Nieprawidłowe uwierzytelnienie",
+            "unknown": "Nieoczekiwany błąd",
+            "timeout": "Przekroczono limit czasu połączenia"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "Adres IP",
+                    "password": "Hasło",
+                    "username": "Nazwa użytkownika",
+                    "port": "Port (domyślnie: 50000)"
+                },
+                "description": "Połącz się z routerem Helvar. Domyślny port to 50000.",
+                "title": "Konfiguracja routera Helvar"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "Adres IP",
+                    "port": "Port (domyślnie: 50000)"
+                },
+                "description": "Zaktualizuj ustawienia routera Helvar.",
+                "title": "Ustawienia Helvar"
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 

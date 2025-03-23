@@ -1,0 +1,40 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Eininga er allereie konfigurert",
+            "cannot_connect": "Klarte ikkje å kople til eininga, sjekk at IP-adressa er rett",
+            "invalid_host": "Ugyldig IP-adresse eller vertsnamn"
+        },
+        "error": {
+            "cannot_connect": "Klarte ikkje å kople til",
+            "invalid_auth": "Ugyldig påloggingsinformasjon",
+            "unknown": "Uventa feil",
+            "timeout": "Tidsavbrot ved tilkopling"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "host": "IP-adresse",
+                    "password": "Passord",
+                    "username": "Brukarnamn",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Kople til Helvar-ruter. Standard port er 50000.",
+                "title": "Helvar-ruter oppsett"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "host": "IP-adresse",
+                    "port": "Port (standard: 50000)"
+                },
+                "description": "Oppdater innstillingane for Helvar-ruteren.",
+                "title": "Helvar-innstillingar"
+            }
+        }
+    },
+    "title": "HelvarNet"
+} 
