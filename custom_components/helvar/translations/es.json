@@ -9,7 +9,7 @@
             "cannot_connect": "No se pudo conectar",
             "invalid_auth": "Autenticación no válida",
             "unknown": "Error inesperado",
-            "timeout": "Tiempo de espera de conexión agotado"
+            "timeout": "Tiempo de espera de conexión"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "Dirección IP",
                     "password": "Contraseña",
                     "username": "Nombre de usuario",
-                    "port": "Puerto (predeterminado: 50000)"
+                    "port": "Puerto (predeterminado: 50000)",
+                    "cluster_id": "ID de cluster (opcional)",
+                    "router_id": "ID de router (opcional)"
                 },
-                "description": "Conectar al router Helvar. El puerto predeterminado es 50000.",
-                "title": "Configuración del router Helvar"
+                "description": "Conectar al router Helvar. Puerto predeterminado es 50000. ID de cluster y ID de router son opcionales y se extraerán de la dirección IP si no se especifican.",
+                "title": "Configuración del Router Helvar"
             }
         }
     },
@@ -29,7 +31,9 @@
             "init": {
                 "data": {
                     "host": "Dirección IP",
-                    "port": "Puerto (predeterminado: 50000)"
+                    "port": "Puerto (predeterminado: 50000)",
+                    "cluster_id": "ID de cluster (opcional)",
+                    "router_id": "ID de router (opcional)"
                 },
                 "description": "Actualizar la configuración del router Helvar.",
                 "title": "Configuración de Helvar"

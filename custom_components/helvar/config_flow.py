@@ -13,7 +13,7 @@ from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv
 
-from .const import CONF_HOST, CONF_PORT, DEFAULT_PORT, DOMAIN
+from .const import CONF_HOST, CONF_PORT, DEFAULT_PORT, DOMAIN, CONF_CLUSTER_ID, CONF_ROUTER_ID
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -21,6 +21,8 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_HOST): cv.string,
         vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
+        vol.Optional(CONF_CLUSTER_ID): cv.positive_int,
+        vol.Optional(CONF_ROUTER_ID): cv.positive_int,
     }
 )
 
@@ -52,7 +54,12 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
         """
-        router = aiohelvar.Router((data[CONF_HOST]), data[CONF_PORT])
+        router = aiohelvar.Router(
+            data[CONF_HOST],
+            data[CONF_PORT],
+            data.get(CONF_CLUSTER_ID),
+            data.get(CONF_ROUTER_ID)
+        )
 
         try:
             await router.connect()
@@ -118,6 +125,14 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 CONF_PORT,
                 default=self.config_entry.data.get(CONF_PORT, DEFAULT_PORT),
             ): cv.port,
+            vol.Optional(
+                CONF_CLUSTER_ID,
+                default=self.config_entry.data.get(CONF_CLUSTER_ID),
+            ): cv.positive_int,
+            vol.Optional(
+                CONF_ROUTER_ID,
+                default=self.config_entry.data.get(CONF_ROUTER_ID),
+            ): cv.positive_int,
         }
 
         return self.async_show_form(

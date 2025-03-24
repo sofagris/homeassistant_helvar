@@ -6,10 +6,10 @@
             "invalid_host": "Nieprawidłowy adres IP lub nazwa hosta"
         },
         "error": {
-            "cannot_connect": "Nie można się połączyć",
-            "invalid_auth": "Nieprawidłowe uwierzytelnienie",
+            "cannot_connect": "Nie można połączyć się",
+            "invalid_auth": "Nieprawidłowa autoryzacja",
             "unknown": "Nieoczekiwany błąd",
-            "timeout": "Przekroczono limit czasu połączenia"
+            "timeout": "Przekroczenie czasu połączenia"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "Adres IP",
                     "password": "Hasło",
                     "username": "Nazwa użytkownika",
-                    "port": "Port (domyślnie: 50000)"
+                    "port": "Port (domyślnie: 50000)",
+                    "cluster_id": "ID klastra (opcjonalne)",
+                    "router_id": "ID routera (opcjonalne)"
                 },
-                "description": "Połącz się z routerem Helvar. Domyślny port to 50000.",
-                "title": "Konfiguracja routera Helvar"
+                "description": "Połącz się z routerem Helvar. Domyślny port to 50000. ID klastra i ID routera są opcjonalne i zostaną wyekstrahowane z adresu IP, jeśli nie zostaną określone.",
+                "title": "Konfiguracja Routera Helvar"
             }
         }
     },
@@ -29,9 +31,11 @@
             "init": {
                 "data": {
                     "host": "Adres IP",
-                    "port": "Port (domyślnie: 50000)"
+                    "port": "Port (domyślnie: 50000)",
+                    "cluster_id": "ID klastra (opcjonalne)",
+                    "router_id": "ID routera (opcjonalne)"
                 },
-                "description": "Zaktualizuj ustawienia routera Helvar.",
+                "description": "Aktualizuj ustawienia routera Helvar.",
                 "title": "Ustawienia Helvar"
             }
         }

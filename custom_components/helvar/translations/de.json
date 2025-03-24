@@ -2,14 +2,14 @@
     "config": {
         "abort": {
             "already_configured": "Gerät ist bereits konfiguriert",
-            "cannot_connect": "Verbindung zum Gerät fehlgeschlagen, überprüfen Sie die IP-Adresse",
+            "cannot_connect": "Verbindung zum Gerät fehlgeschlagen, bitte überprüfen Sie die IP-Adresse",
             "invalid_host": "Ungültige IP-Adresse oder Hostname"
         },
         "error": {
             "cannot_connect": "Verbindung fehlgeschlagen",
             "invalid_auth": "Ungültige Authentifizierung",
             "unknown": "Unerwarteter Fehler",
-            "timeout": "Zeitüberschreitung bei der Verbindung"
+            "timeout": "Verbindungszeitüberschreitung"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "IP-Adresse",
                     "password": "Passwort",
                     "username": "Benutzername",
-                    "port": "Port (Standard: 50000)"
+                    "port": "Port (Standard: 50000)",
+                    "cluster_id": "Cluster-ID (optional)",
+                    "router_id": "Router-ID (optional)"
                 },
-                "description": "Verbindung zum Helvar-Router herstellen. Standardport ist 50000.",
-                "title": "Helvar-Router Einrichtung"
+                "description": "Verbindung zum Helvar-Router herstellen. Standardport ist 50000. Cluster-ID und Router-ID sind optional und werden aus der IP-Adresse extrahiert, wenn nicht angegeben.",
+                "title": "Helvar Router Einrichtung"
             }
         }
     },
@@ -29,10 +31,12 @@
             "init": {
                 "data": {
                     "host": "IP-Adresse",
-                    "port": "Port (Standard: 50000)"
+                    "port": "Port (Standard: 50000)",
+                    "cluster_id": "Cluster-ID (optional)",
+                    "router_id": "Router-ID (optional)"
                 },
-                "description": "Aktualisieren Sie die Einstellungen des Helvar-Routers.",
-                "title": "Helvar-Einstellungen"
+                "description": "Helvar-Router-Einstellungen aktualisieren.",
+                "title": "Helvar Einstellungen"
             }
         }
     },

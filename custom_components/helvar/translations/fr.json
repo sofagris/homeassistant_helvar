@@ -6,10 +6,10 @@
             "invalid_host": "Adresse IP ou nom d'hôte invalide"
         },
         "error": {
-            "cannot_connect": "Échec de la connexion",
+            "cannot_connect": "Impossible de se connecter",
             "invalid_auth": "Authentification invalide",
             "unknown": "Erreur inattendue",
-            "timeout": "Délai d'attente de la connexion dépassé"
+            "timeout": "Délai de connexion dépassé"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "Adresse IP",
                     "password": "Mot de passe",
                     "username": "Nom d'utilisateur",
-                    "port": "Port (par défaut: 50000)"
+                    "port": "Port (par défaut : 50000)",
+                    "cluster_id": "ID de cluster (optionnel)",
+                    "router_id": "ID de routeur (optionnel)"
                 },
-                "description": "Connectez-vous au routeur Helvar. Le port par défaut est 50000.",
-                "title": "Configuration du routeur Helvar"
+                "description": "Connectez-vous au routeur Helvar. Le port par défaut est 50000. L'ID de cluster et l'ID de routeur sont optionnels et seront extraits de l'adresse IP si non spécifiés.",
+                "title": "Configuration du Routeur Helvar"
             }
         }
     },
@@ -29,7 +31,9 @@
             "init": {
                 "data": {
                     "host": "Adresse IP",
-                    "port": "Port (par défaut: 50000)"
+                    "port": "Port (par défaut : 50000)",
+                    "cluster_id": "ID de cluster (optionnel)",
+                    "router_id": "ID de routeur (optionnel)"
                 },
                 "description": "Mettre à jour les paramètres du routeur Helvar.",
                 "title": "Paramètres Helvar"

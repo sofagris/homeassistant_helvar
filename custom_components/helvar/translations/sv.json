@@ -2,14 +2,14 @@
     "config": {
         "abort": {
             "already_configured": "Enheten är redan konfigurerad",
-            "cannot_connect": "Det gick inte att ansluta till enheten, kontrollera IP-adressen",
+            "cannot_connect": "Kunde inte ansluta till enheten, kontrollera IP-adressen",
             "invalid_host": "Ogiltig IP-adress eller värdnamn"
         },
         "error": {
-            "cannot_connect": "Det gick inte att ansluta",
+            "cannot_connect": "Kunde inte ansluta",
             "invalid_auth": "Ogiltig autentisering",
             "unknown": "Oväntat fel",
-            "timeout": "Timeout vid anslutning"
+            "timeout": "Anslutnings-timeout"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "IP-adress",
                     "password": "Lösenord",
                     "username": "Användarnamn",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valfritt)",
+                    "router_id": "Router-ID (valfritt)"
                 },
-                "description": "Anslut till Helvar router. Standardport är 50000.",
-                "title": "Helvar Router Inställning"
+                "description": "Anslut till Helvar-rutern. Standardport är 50000. Cluster-ID och Router-ID är valfria och kommer att extraheras från IP-adressen om de inte anges.",
+                "title": "Helvar Router Installation"
             }
         }
     },
@@ -29,9 +31,11 @@
             "init": {
                 "data": {
                     "host": "IP-adress",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valfritt)",
+                    "router_id": "Router-ID (valfritt)"
                 },
-                "description": "Uppdatera inställningarna för Helvar routern.",
+                "description": "Uppdatera Helvar-ruterns inställningar.",
                 "title": "Helvar Inställningar"
             }
         }

@@ -6,8 +6,8 @@
             "invalid_host": "Ugyldig IP-adresse eller vertsnamn"
         },
         "error": {
-            "cannot_connect": "Klarte ikkje å kople til",
-            "invalid_auth": "Ugyldig påloggingsinformasjon",
+            "cannot_connect": "Kunne ikkje kople til",
+            "invalid_auth": "Ugyldig autentisering",
             "unknown": "Uventa feil",
             "timeout": "Tidsavbrot ved tilkopling"
         },
@@ -17,10 +17,12 @@
                     "host": "IP-adresse",
                     "password": "Passord",
                     "username": "Brukarnamn",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valfri)",
+                    "router_id": "Router-ID (valfri)"
                 },
-                "description": "Kople til Helvar-ruter. Standard port er 50000.",
-                "title": "Helvar-ruter oppsett"
+                "description": "Kople til Helvar-ruteren. Standard port er 50000. Cluster-ID og Router-ID er valfrie og vil bli henta frå IP-adressa om dei ikkje er oppgjevne.",
+                "title": "Helvar Router Oppsett"
             }
         }
     },
@@ -29,10 +31,12 @@
             "init": {
                 "data": {
                     "host": "IP-adresse",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valfri)",
+                    "router_id": "Router-ID (valfri)"
                 },
                 "description": "Oppdater innstillingane for Helvar-ruteren.",
-                "title": "Helvar-innstillingar"
+                "title": "Helvar Innstillingar"
             }
         }
     },

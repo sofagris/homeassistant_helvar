@@ -9,7 +9,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv
 
-from .const import CONF_HOST, CONF_PORT, DEFAULT_PORT, DOMAIN
+from .const import CONF_HOST, CONF_PORT, DEFAULT_PORT, DOMAIN, CONF_CLUSTER_ID, CONF_ROUTER_ID
 from .router import HelvarRouter
 
 PLATFORMS = ["light", "select"]
@@ -20,6 +20,8 @@ CONFIG_SCHEMA = vol.Schema(
             {
                 vol.Required(CONF_HOST): cv.string,
                 vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
+                vol.Optional(CONF_CLUSTER_ID): cv.positive_int,
+                vol.Optional(CONF_ROUTER_ID): cv.positive_int,
             }
         )
     },

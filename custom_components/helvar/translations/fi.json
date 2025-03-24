@@ -2,14 +2,14 @@
     "config": {
         "abort": {
             "already_configured": "Laite on jo määritetty",
-            "cannot_connect": "Yhteyden muodostaminen laitteeseen epäonnistui, tarkista IP-osoite",
+            "cannot_connect": "Yhteyttä laitteeseen ei voitu muodostaa, tarkista IP-osoite",
             "invalid_host": "Virheellinen IP-osoite tai isäntänimi"
         },
         "error": {
-            "cannot_connect": "Yhteyden muodostaminen epäonnistui",
+            "cannot_connect": "Yhteyttä ei voitu muodostaa",
             "invalid_auth": "Virheellinen todennus",
             "unknown": "Odottamaton virhe",
-            "timeout": "Aikakatkaisu yhteydessä"
+            "timeout": "Yhteyden aikakatkaisu"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "IP-osoite",
                     "password": "Salasana",
                     "username": "Käyttäjätunnus",
-                    "port": "Portti (oletus: 50000)"
+                    "port": "Portti (oletus: 50000)",
+                    "cluster_id": "Klusteri-ID (valinnainen)",
+                    "router_id": "Reititin-ID (valinnainen)"
                 },
-                "description": "Yhdistä Helvar-reitittimeen. Oletusportti on 50000.",
-                "title": "Helvar-reitittimen asetukset"
+                "description": "Yhdistä Helvar-reitittimeen. Oletusportti on 50000. Klusteri-ID ja Reititin-ID ovat valinnaisia ja ne haetaan IP-osoitteesta, jos niitä ei ole määritetty.",
+                "title": "Helvar Reititin Asetukset"
             }
         }
     },
@@ -29,10 +31,12 @@
             "init": {
                 "data": {
                     "host": "IP-osoite",
-                    "port": "Portti (oletus: 50000)"
+                    "port": "Portti (oletus: 50000)",
+                    "cluster_id": "Klusteri-ID (valinnainen)",
+                    "router_id": "Reititin-ID (valinnainen)"
                 },
                 "description": "Päivitä Helvar-reitittimen asetukset.",
-                "title": "Helvar-asetukset"
+                "title": "Helvar Asetukset"
             }
         }
     },

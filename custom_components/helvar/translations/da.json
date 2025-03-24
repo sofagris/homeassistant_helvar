@@ -2,14 +2,14 @@
     "config": {
         "abort": {
             "already_configured": "Enheden er allerede konfigureret",
-            "cannot_connect": "Kunne ikke oprette forbindelse til enheden, kontroller IP-adressen",
+            "cannot_connect": "Kunne ikke forbinde til enheden, tjek venligst IP-adressen",
             "invalid_host": "Ugyldig IP-adresse eller værtsnavn"
         },
         "error": {
-            "cannot_connect": "Kunne ikke oprette forbindelse",
+            "cannot_connect": "Kunne ikke forbinde",
             "invalid_auth": "Ugyldig godkendelse",
             "unknown": "Uventet fejl",
-            "timeout": "Timeout ved forbindelse"
+            "timeout": "Forbindelses-timeout"
         },
         "step": {
             "user": {
@@ -17,9 +17,11 @@
                     "host": "IP-adresse",
                     "password": "Adgangskode",
                     "username": "Brugernavn",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valgfrit)",
+                    "router_id": "Router-ID (valgfrit)"
                 },
-                "description": "Opret forbindelse til Helvar router. Standardport er 50000.",
+                "description": "Forbind til Helvar-routeren. Standard port er 50000. Cluster-ID og Router-ID er valgfrie og vil blive hentet fra IP-adressen, hvis ikke angivet.",
                 "title": "Helvar Router Opsætning"
             }
         }
@@ -29,9 +31,11 @@
             "init": {
                 "data": {
                     "host": "IP-adresse",
-                    "port": "Port (standard: 50000)"
+                    "port": "Port (standard: 50000)",
+                    "cluster_id": "Cluster-ID (valgfrit)",
+                    "router_id": "Router-ID (valgfrit)"
                 },
-                "description": "Opdater indstillingerne for Helvar routeren.",
+                "description": "Opdater Helvar-routerens indstillinger.",
                 "title": "Helvar Indstillinger"
             }
         }

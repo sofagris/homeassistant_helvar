@@ -17,9 +17,11 @@
                     "host": "IP address",
                     "password": "Password",
                     "username": "Username",
-                    "port": "Port (default: 50000)"
+                    "port": "Port (default: 50000)",
+                    "cluster_id": "Cluster ID (optional)",
+                    "router_id": "Router ID (optional)"
                 },
-                "description": "Connect to Helvar router. Default port is 50000.",
+                "description": "Connect to Helvar router. Default port is 50000. Cluster ID and Router ID are optional and will be extracted from IP address if not provided.",
                 "title": "Helvar Router Setup"
             }
         }
@@ -29,7 +31,9 @@
             "init": {
                 "data": {
                     "host": "IP address",
-                    "port": "Port (default: 50000)"
+                    "port": "Port (default: 50000)",
+                    "cluster_id": "Cluster ID (optional)",
+                    "router_id": "Router ID (optional)"
                 },
                 "description": "Update the Helvar router settings.",
                 "title": "Helvar Settings"

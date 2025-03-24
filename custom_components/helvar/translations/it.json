@@ -2,14 +2,14 @@
     "config": {
         "abort": {
             "already_configured": "Il dispositivo è già configurato",
-            "cannot_connect": "Impossibile connettersi al dispositivo, verificare l'indirizzo IP",
+            "cannot_connect": "Impossibile connettersi al dispositivo, verifica l'indirizzo IP",
             "invalid_host": "Indirizzo IP o nome host non valido"
         },
         "error": {
             "cannot_connect": "Impossibile connettersi",
             "invalid_auth": "Autenticazione non valida",
             "unknown": "Errore imprevisto",
-            "timeout": "Timeout della connessione"
+            "timeout": "Timeout di connessione"
         },
         "step": {
             "user": {
@@ -17,10 +17,12 @@
                     "host": "Indirizzo IP",
                     "password": "Password",
                     "username": "Nome utente",
-                    "port": "Porta (predefinita: 50000)"
+                    "port": "Porta (predefinita: 50000)",
+                    "cluster_id": "ID cluster (opzionale)",
+                    "router_id": "ID router (opzionale)"
                 },
-                "description": "Connetti al router Helvar. La porta predefinita è 50000.",
-                "title": "Configurazione router Helvar"
+                "description": "Connetti al router Helvar. La porta predefinita è 50000. L'ID cluster e l'ID router sono opzionali e verranno estratti dall'indirizzo IP se non specificati.",
+                "title": "Configurazione Router Helvar"
             }
         }
     },
@@ -29,7 +31,9 @@
             "init": {
                 "data": {
                     "host": "Indirizzo IP",
-                    "port": "Porta (predefinita: 50000)"
+                    "port": "Porta (predefinita: 50000)",
+                    "cluster_id": "ID cluster (opzionale)",
+                    "router_id": "ID router (opzionale)"
                 },
                 "description": "Aggiorna le impostazioni del router Helvar.",
                 "title": "Impostazioni Helvar"

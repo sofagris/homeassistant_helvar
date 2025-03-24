@@ -8,7 +8,7 @@
   "homekit": {},
   "iot_class": "local_push",
   "loggers": ["aiohelvar"],
-  "requirements": ["git+https://github.com/sofagris/aiohelvar.git@main"],
+  "requirements": ["git+https://github.com/sofagris/aiohelvar.git@main", "re", "socket"],
   "ssdp": [],
   "version": "0.1.1", 
   "zeroconf": [],
