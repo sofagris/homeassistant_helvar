@@ -33,12 +33,12 @@ class HelvarRouter:
     @property
     def cluster_id(self):
         """Return the cluster id of this router."""
-        return self.config_entry.data[CONF_CLUSTER_ID]
+        return self.config_entry.data.get(CONF_CLUSTER_ID)
 
     @property
     def router_id(self):
         """Return the router id of this router."""
-        return self.config_entry.data[CONF_ROUTER_ID]
+        return self.config_entry.data.get(CONF_ROUTER_ID)
 
     async def async_setup(self, tries=0):
         """Set up a helvar router based on host parameter."""
