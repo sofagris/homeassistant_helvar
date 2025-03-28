@@ -6,7 +6,11 @@ import aiohelvar
 # Import the device class from the component that you want to support
 from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
     ATTR_BRIGHTNESS,
+    ATTR_RGB_COLOR,
+    ATTR_RGBW_COLOR,
     COLOR_MODE_BRIGHTNESS,
+    COLOR_MODE_RGB,
+    COLOR_MODE_RGBW,
     LightEntity,
 )
 
@@ -49,6 +53,9 @@ class HelvarLight(LightEntity):
         """Initialize an HelvarLight."""
         self.router = router
         self.device = device
+        self._color_mode = COLOR_MODE_BRIGHTNESS
+        self._rgb_color = None
+        self._rgbw_color = None
 
         self.register_subscription()
 
@@ -95,19 +102,46 @@ class HelvarLight(LightEntity):
         return False
 
     @property
+    def color_mode(self):
+        """Return the color mode of the light."""
+        return self._color_mode
+
+    @property
+    def rgb_color(self):
+        """Return the RGB color value."""
+        return self._rgb_color
+
+    @property
+    def rgbw_color(self):
+        """Return the RGBW color value."""
+        return self._rgbw_color
+
+    @property
     def supported_color_modes(self):
-        """Colour modes."""
-        return [COLOR_MODE_BRIGHTNESS]
+        """Return supported color modes."""
+        # TODO: Implement proper color mode detection based on device capabilities
+        return [COLOR_MODE_BRIGHTNESS, COLOR_MODE_RGB, COLOR_MODE_RGBW]
 
     async def async_turn_on(self, **kwargs):
-        """We'll just select scene 1 for a group, for now."""
+        """Turn the light on."""
+        if ATTR_RGB_COLOR in kwargs:
+            self._rgb_color = kwargs[ATTR_RGB_COLOR]
+            self._color_mode = COLOR_MODE_RGB
+            # TODO: Implement RGB color setting
+        elif ATTR_RGBW_COLOR in kwargs:
+            self._rgbw_color = kwargs[ATTR_RGBW_COLOR]
+            self._color_mode = COLOR_MODE_RGBW
+            # TODO: Implement RGBW color setting
+        else:
+            self._color_mode = COLOR_MODE_BRIGHTNESS
+
         brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
         await self.router.api.devices.set_device_brightness(
             self.device.address, brightness
         )
 
     async def async_turn_off(self, **kwargs):
-        """Instruct the light to turn off."""
+        """Turn the light off."""
         await self.router.api.devices.set_device_brightness(self.device.address, 0)
 
     # async def async_update(self):
