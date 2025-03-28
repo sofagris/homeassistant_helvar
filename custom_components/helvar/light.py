@@ -8,7 +8,6 @@ from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
     ATTR_BRIGHTNESS,
     COLOR_MODE_BRIGHTNESS,
     LightEntity,
-    LightEntityFeature,
 )
 
 from .const import (  # DEFAULT_OFF_GROUP_BLOCK,; DEFAULT_OFF_GROUP_SCENE,; DEFAULT_ON_GROUP_BLOCK,; DEFAULT_ON_GROUP_SCENE,; VALID_OFF_GROUP_SCENES,
@@ -85,18 +84,12 @@ class HelvarLight(LightEntity):
 
     @property
     def brightness(self):
-        """Return the brightness of the light.
-
-        This method is optional. Removing it indicates to Home Assistant
-        that brightness is not supported for this light.
-        """
-
+        """Return the brightness of the light."""
         return self.device.brightness
 
     @property
     def is_on(self):
         """Return true if light is on."""
-
         if self.brightness > 0:
             return True
         return False
@@ -104,47 +97,17 @@ class HelvarLight(LightEntity):
     @property
     def supported_color_modes(self):
         """Colour modes."""
-
         return [COLOR_MODE_BRIGHTNESS]
-
-    @property
-    def supported_features(self) -> LightEntityFeature:
-        """Supported Features."""
-        return LightEntityFeature.BRIGHTNESS
 
     async def async_turn_on(self, **kwargs):
         """We'll just select scene 1 for a group, for now."""
-
         brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
-
-        # if self.is_group:
-        #     await self._router.api.groups.set_scene(
-        #         aiohelvar.parser.address.SceneAddress(
-        #             self._group.group_id, DEFAULT_ON_GROUP_BLOCK, DEFAULT_ON_GROUP_SCENE
-        #         )
-        #     )
-        # else:
-        # For now, set the device level directly. But we may want to set the device scene as we do with
-        # groups.
-
         await self.router.api.devices.set_device_brightness(
             self.device.address, brightness
         )
 
     async def async_turn_off(self, **kwargs):
         """Instruct the light to turn off."""
-
-        # if self.is_group:
-        #     await self._router.api.groups.set_scene(
-        #         aiohelvar.parser.address.SceneAddress(
-        #             self._group.group_id,
-        #             DEFAULT_OFF_GROUP_BLOCK,
-        #             DEFAULT_OFF_GROUP_SCENE,
-        #         )
-        #     )
-        # else:
-        # For now, set the device level directly. But we may want to set the device scene as we do with
-        # groups.
         await self.router.api.devices.set_device_brightness(self.device.address, 0)
 
     # async def async_update(self):
