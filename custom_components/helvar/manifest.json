@@ -1,16 +1,16 @@
 {
   "domain": "helvar",
   "name": "Helvar",
-  "codeowners": ["@tomplayford"],
+  "codeowners": ["@sofagris"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://www.home-assistant.io/integrations/helvar",
+  "documentation": "https://github.com/sofagris/homeassistant_helvar",
   "homekit": {},
   "iot_class": "local_push",
   "loggers": ["aiohelvar"],
-  "requirements": ["git+https://github.com/sofagris/aiohelvar.git@main"],
+  "requirements": ["git+https://github.com/sofagris/aiohelvar.git@v0.9.3"],
   "ssdp": [],
-  "version": "0.1.1", 
+  "version": "0.9.3",
   "zeroconf": [],
   "icon": "mdi:light-switch"
 }
