@@ -7,8 +7,8 @@ import aiohelvar
 from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
     ATTR_BRIGHTNESS,
     COLOR_MODE_BRIGHTNESS,
-    SUPPORT_BRIGHTNESS,
     LightEntity,
+    LightEntityFeature,
 )
 
 from .const import (  # DEFAULT_OFF_GROUP_BLOCK,; DEFAULT_OFF_GROUP_SCENE,; DEFAULT_ON_GROUP_BLOCK,; DEFAULT_ON_GROUP_SCENE,; VALID_OFF_GROUP_SCENES,
@@ -108,9 +108,9 @@ class HelvarLight(LightEntity):
         return [COLOR_MODE_BRIGHTNESS]
 
     @property
-    def supported_features(self) -> int:
+    def supported_features(self) -> LightEntityFeature:
         """Supported Features."""
-        return SUPPORT_BRIGHTNESS
+        return LightEntityFeature.BRIGHTNESS
 
     async def async_turn_on(self, **kwargs):
         """We'll just select scene 1 for a group, for now."""
