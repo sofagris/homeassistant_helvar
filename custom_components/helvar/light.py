@@ -51,9 +51,10 @@ class HelvarLight(LightEntity):
         """Initialize an HelvarLight."""
         self.router = router
         self.device = device
-        self._color_mode = ColorMode.BRIGHTNESS
-        self._rgb_color = None
-        self._rgbw_color = None
+        self._attr_color_mode = ColorMode.BRIGHTNESS
+        self._attr_rgb_color = None
+        self._attr_rgbw_color = None
+        self._attr_supported_color_modes = {ColorMode.BRIGHTNESS, ColorMode.RGB, ColorMode.RGBW}
 
         self.register_subscription()
 
@@ -100,40 +101,37 @@ class HelvarLight(LightEntity):
         return False
 
     @property
-    def color_mode(self):
+    def color_mode(self) -> ColorMode:
         """Return the color mode of the light."""
-        return self._color_mode
+        return self._attr_color_mode
 
     @property
     def rgb_color(self):
         """Return the RGB color value."""
-        return self._rgb_color
+        return self._attr_rgb_color
 
     @property
     def rgbw_color(self):
         """Return the RGBW color value."""
-        return self._rgbw_color
+        return self._attr_rgbw_color
 
     @property
-    def supported_color_modes(self):
+    def supported_color_modes(self) -> set[ColorMode]:
         """Return supported color modes."""
-        # TODO: Implement proper color mode detection based on device capabilities
-        # The integration currently only supports brightness, rgb and rgbw, and returns this regardless of the actual capabilities of the light.
-        # This is not ideal, but it's a quick fix to get the lights working.
-        return ["brightness", "rgb", "rgbw"]
+        return self._attr_supported_color_modes
 
     async def async_turn_on(self, **kwargs):
         """Turn the light on."""
         if ATTR_RGB_COLOR in kwargs:
-            self._rgb_color = kwargs[ATTR_RGB_COLOR]
-            self._color_mode = ColorMode.RGB
+            self._attr_rgb_color = kwargs[ATTR_RGB_COLOR]
+            self._attr_color_mode = ColorMode.RGB
             # TODO: Implement RGB color setting
         elif ATTR_RGBW_COLOR in kwargs:
-            self._rgbw_color = kwargs[ATTR_RGBW_COLOR]
-            self._color_mode = ColorMode.RGBW
+            self._attr_rgbw_color = kwargs[ATTR_RGBW_COLOR]
+            self._attr_color_mode = ColorMode.RGBW
             # TODO: Implement RGBW color setting
         else:
-            self._color_mode = ColorMode.BRIGHTNESS
+            self._attr_color_mode = ColorMode.BRIGHTNESS
 
         brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
         await self.router.api.devices.set_device_brightness(
