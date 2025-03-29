@@ -8,9 +8,7 @@ from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
     ATTR_BRIGHTNESS,
     ATTR_RGB_COLOR,
     ATTR_RGBW_COLOR,
-    COLOR_MODE_BRIGHTNESS,
-    COLOR_MODE_RGB,
-    COLOR_MODE_RGBW,
+    ColorMode,
     LightEntity,
 )
 
@@ -53,7 +51,7 @@ class HelvarLight(LightEntity):
         """Initialize an HelvarLight."""
         self.router = router
         self.device = device
-        self._color_mode = COLOR_MODE_BRIGHTNESS
+        self._color_mode = ColorMode.BRIGHTNESS
         self._rgb_color = None
         self._rgbw_color = None
 
@@ -120,20 +118,20 @@ class HelvarLight(LightEntity):
     def supported_color_modes(self):
         """Return supported color modes."""
         # TODO: Implement proper color mode detection based on device capabilities
-        return [COLOR_MODE_BRIGHTNESS, COLOR_MODE_RGB, COLOR_MODE_RGBW]
+        return [ColorMode.BRIGHTNESS, ColorMode.RGB, ColorMode.RGBW]
 
     async def async_turn_on(self, **kwargs):
         """Turn the light on."""
         if ATTR_RGB_COLOR in kwargs:
             self._rgb_color = kwargs[ATTR_RGB_COLOR]
-            self._color_mode = COLOR_MODE_RGB
+            self._color_mode = ColorMode.RGB
             # TODO: Implement RGB color setting
         elif ATTR_RGBW_COLOR in kwargs:
             self._rgbw_color = kwargs[ATTR_RGBW_COLOR]
-            self._color_mode = COLOR_MODE_RGBW
+            self._color_mode = ColorMode.RGBW
             # TODO: Implement RGBW color setting
         else:
-            self._color_mode = COLOR_MODE_BRIGHTNESS
+            self._color_mode = ColorMode.BRIGHTNESS
 
         brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
         await self.router.api.devices.set_device_brightness(
