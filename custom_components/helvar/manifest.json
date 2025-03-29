@@ -8,9 +8,9 @@
   "homekit": {},
   "iot_class": "local_push",
   "loggers": ["aiohelvar"],
-  "requirements": ["aiohelvar@git+https://github.com/sofagris/aiohelvar.git@v0.9.3"],
+  "requirements": ["aiohelvar@git+https://github.com/sofagris/aiohelvar.git@v0.9.4"],
   "ssdp": [],
-  "version": "0.9.3",
+  "version": "0.9.4",
   "zeroconf": [],
   "icon": "mdi:light-switch"
 }
