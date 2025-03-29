@@ -86,7 +86,8 @@ class HelvarRouter:
         # self.sensor_manager = SensorManager(self)
 
         # Set up platforms
-        await hass.config_entries.async_forward_entry_setup(self.config_entry, "light")
-        await hass.config_entries.async_forward_entry_setup(self.config_entry, "select")
+        await hass.config_entries.async_forward_entry_setups(
+            self.config_entry, ["light", "select"]
+        )
 
         return True
