@@ -118,6 +118,8 @@ class HelvarLight(LightEntity):
     def supported_color_modes(self):
         """Return supported color modes."""
         # TODO: Implement proper color mode detection based on device capabilities
+        # The integration currently only supports brightness, rgb and rgbw, and returns this regardless of the actual capabilities of the light.
+        # This is not ideal, but it's a quick fix to get the lights working.
         return ["brightness", "rgb", "rgbw"]
 
     async def async_turn_on(self, **kwargs):
