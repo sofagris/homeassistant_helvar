@@ -6,11 +6,11 @@
   "dependencies": [],
   "documentation": "https://github.com/sofagris/homeassistant_helvar",
   "homekit": {},
-  "iot_class": "local_push",
+  "iot_class": "local_polling",
   "loggers": ["aiohelvar"],
-  "requirements": ["aiohelvar@git+https://github.com/sofagris/aiohelvar.git@v0.9.4"],
+  "requirements": ["aiohelvar@git+https://github.com/sofagris/aiohelvar.git@v0.9.3"],
   "ssdp": [],
-  "version": "0.9.4",
+  "version": "0.9.3",
   "zeroconf": [],
   "icon": "mdi:light-switch"
 }

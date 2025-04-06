@@ -1,42 +1,49 @@
 """Support for Helvar light devices."""
+from __future__ import annotations
+
 import logging
+from typing import Any, Optional, Tuple
 
 import aiohelvar
 
 # Import the device class from the component that you want to support
-from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
+from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
     ATTR_RGB_COLOR,
     ATTR_RGBW_COLOR,
     ColorMode,
     LightEntity,
 )
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import (  # DEFAULT_OFF_GROUP_BLOCK,; DEFAULT_OFF_GROUP_SCENE,; DEFAULT_ON_GROUP_BLOCK,; DEFAULT_ON_GROUP_SCENE,; VALID_OFF_GROUP_SCENES,
-    DOMAIN as HELVAR_DOMAIN,
-)
+from .const import DOMAIN as HELVAR_DOMAIN
+from .router import HelvarRouter
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def asynnc_setup_platform(hass, config, add_entities, discovery_info=None):
+async def asynnc_setup_platform(
+    hass: HomeAssistant,
+    config: dict[str, Any],
+    add_entities: AddEntitiesCallback,
+    discovery_info: Optional[dict[str, Any]] = None,
+) -> None:
     """Not currently used."""
 
 
-async def async_setup_entry(hass, config_entry, async_add_entities):
+async def async_setup_entry(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    async_add_entities: AddEntitiesCallback,
+) -> None:
     """Set up Helvar lights from a config entry."""
-
-    router = hass.data[HELVAR_DOMAIN][config_entry.entry_id]
-
-    # Add devices
-    # async_add_entities(
-    #     # Add groups
-    #     HelvarLight(group, None, router)
-    #     for group in router.api.groups.groups.values()
-    # )
+    router: HelvarRouter = hass.data[HELVAR_DOMAIN][config_entry.entry_id]
 
     devices = [
-        HelvarLight(device, router) for device in router.api.devices.get_light_devices()
+        HelvarLight(device, router)
+        for device in router.api.devices.get_light_devices()
     ]
 
     _LOGGER.info("Adding %s helvar devices", len(devices))
@@ -47,24 +54,30 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 class HelvarLight(LightEntity):
     """Representation of a Helvar Light."""
 
-    def __init__(self, device: aiohelvar.devices.Device, router):
+    def __init__(self, device: aiohelvar.devices.Device, router: HelvarRouter) -> None:
         """Initialize an HelvarLight."""
         self.router = router
         self.device = device
-        self._attr_rgb_color = None
-        self._attr_rgbw_color = None
-        # We support RGB, RGBW and brightness modes
-        self._attr_supported_color_modes = {ColorMode.BRIGHTNESS, ColorMode.RGB, ColorMode.RGBW}
+        self._attr_rgb_color: Optional[Tuple[int, int, int]] = None
+        self._attr_rgbw_color: Optional[Tuple[int, int, int, int]] = None
+
+        # TODO: Implement proper feature detection from aiohelvar
+        # For now, we'll use a minimal set of features to avoid warnings
+        # Once aiohelvar supports feature detection, we should:
+        # 1. Query the device for supported features
+        # 2. Set supported_color_modes based on actual device capabilities
+        # 3. Set initial color_mode based on current device state
+        self._attr_supported_color_modes: set[ColorMode] = {ColorMode.BRIGHTNESS}
+        self._attr_color_mode: ColorMode = ColorMode.BRIGHTNESS
 
         self.register_subscription()
 
-    def register_subscription(self):
+    def register_subscription(self) -> None:
         """Register subscription."""
 
-        async def async_router_callback_device(device):
-
+        async def async_router_callback_device(device: aiohelvar.devices.Device) -> None:
+            """Handle device updates."""
             _LOGGER.debug("Received status update for %s", device)
-
             self.async_write_ha_state()
 
         self.router.api.devices.register_subscription(
@@ -72,7 +85,7 @@ class HelvarLight(LightEntity):
         )
 
     @property
-    def unique_id(self):
+    def unique_id(self) -> str:
         """
         Return the unique ID of this Helvar light.
 
@@ -84,69 +97,56 @@ class HelvarLight(LightEntity):
         return f"{self.device.address}-light"
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Return the display name of this light."""
         return self.device.name
 
     @property
-    def brightness(self):
+    def brightness(self) -> Optional[int]:
         """Return the brightness of the light."""
         return self.device.brightness
 
     @property
-    def is_on(self):
+    def is_on(self) -> bool:
         """Return true if light is on."""
-        if self.brightness > 0:
-            return True
-        return False
+        return self.brightness > 0 if self.brightness is not None else False
 
     @property
     def color_mode(self) -> ColorMode:
         """Return the color mode of the light."""
-        # Let Home Assistant deduce the color mode based on which properties are set
-        if self._attr_rgbw_color is not None:
-            return ColorMode.RGBW
-        if self._attr_rgb_color is not None:
-            return ColorMode.RGB
-        if self.brightness is not None:
-            return ColorMode.BRIGHTNESS
-        return ColorMode.UNKNOWN
+        # TODO: Implement proper color mode detection from device state
+        # For now, we'll just return BRIGHTNESS since that's what we support
+        return ColorMode.BRIGHTNESS
 
     @property
-    def rgb_color(self):
+    def rgb_color(self) -> Optional[Tuple[int, int, int]]:
         """Return the RGB color value."""
-        return self._attr_rgb_color
+        # TODO: Implement RGB color support when aiohelvar supports it
+        return None
 
     @property
-    def rgbw_color(self):
+    def rgbw_color(self) -> Optional[Tuple[int, int, int, int]]:
         """Return the RGBW color value."""
-        return self._attr_rgbw_color
+        # TODO: Implement RGBW color support when aiohelvar supports it
+        return None
 
     @property
     def supported_color_modes(self) -> set[ColorMode]:
         """Return supported color modes."""
+        # TODO: Implement proper feature detection from aiohelvar
+        # For now, we only support brightness to avoid warnings
         return self._attr_supported_color_modes
 
-    async def async_turn_on(self, **kwargs):
+    async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the light on."""
-        if ATTR_RGB_COLOR in kwargs:
-            self._attr_rgb_color = kwargs[ATTR_RGB_COLOR]
-            self._attr_rgbw_color = None
-            # TODO: Implement RGB color setting
-        elif ATTR_RGBW_COLOR in kwargs:
-            self._attr_rgbw_color = kwargs[ATTR_RGBW_COLOR]
-            self._attr_rgb_color = None
-            # TODO: Implement RGBW color setting
-        else:
-            self._attr_rgb_color = None
-            self._attr_rgbw_color = None
-
+        # TODO: Implement RGB/RGBW support when aiohelvar supports it
+        # For now, we only handle brightness
         brightness = kwargs.get(ATTR_BRIGHTNESS, 255)
         await self.router.api.devices.set_device_brightness(
             self.device.address, brightness
         )
 
-    async def async_turn_off(self, **kwargs):
+    async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn the light off."""
         await self.router.api.devices.set_device_brightness(self.device.address, 0)
 
