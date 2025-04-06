@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.5] - 2024-04-07
+
+### Changed
+- No changes in this version
+
+### Fixed
+- Corrected version numbering to match GitHub releases
+
 ## [0.9.4] - 2024-04-07
 
 ### Changed
