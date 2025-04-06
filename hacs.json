@@ -6,7 +6,7 @@
     "domains": ["light"],
     "iot_class": "local_push",
     "persistent_directory": "userfiles",
-    "version": "1.0.0",
+    "version": "0.9.4",
     "filename": "custom_components/helvar/manifest.json",
     "hide_default_branch": true
 }

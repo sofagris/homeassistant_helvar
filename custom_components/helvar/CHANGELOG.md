@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.4] - 2024-04-07
+
+### Changed
+- No changes in this version
+
+### Fixed
+- Corrected version numbering inconsistency
+
 ## [0.9.3] - 2024-04-06
 
 ### Changed
